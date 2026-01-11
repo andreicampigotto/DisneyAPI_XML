@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -8,6 +10,9 @@ android {
     namespace = "com.example.disneyxml"
     compileSdk {
         version = release(36)
+    }
+    buildFeatures {
+        buildConfig = true
     }
 
     defaultConfig {
@@ -38,6 +43,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 }
 
@@ -59,9 +65,10 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    //koin
-    implementation(libs.koin.core)
-    implementation(libs.koin.bom)
+
+    // Koin
+    //def koin_version = "4.1.1"
+    implementation ("io.insert-koin:koin-android:4.1.1")
 
     //Retrofit
     implementation(libs.retrofit)
@@ -73,4 +80,7 @@ dependencies {
     // NAVIGATION
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.9.6")
+
+    // GLIDE
+    implementation("com.github.bumptech.glide:glide:5.0.5")
 }

@@ -34,7 +34,7 @@ class character_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.character_fragment, container, false)
+        return inflater.inflate(R.layout.characters_fragment, container, false)
     }
 
     companion object {

@@ -16,5 +16,4 @@
         android:label="character_fragment"
         tools:layout="@layout/characters_fragment" />
 
-
 </navigation>
