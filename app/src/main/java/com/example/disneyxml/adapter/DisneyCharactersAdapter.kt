@@ -8,31 +8,36 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.disneyxml.R
 import com.example.disneyxml.databinding.ItemCharacterBinding
-import com.example.disneyxml.data.model.CharacterData
+import com.example.disneyxml.data.model.DisneyCharacterData
 
-class CharactersAdapter():
-        ListAdapter<CharacterData, CharacterViewHolder>(CharacterDiffCallBack()){
+class DisneyCharactersAdapter():
+        ListAdapter<DisneyCharacterData, DisneyCharacterViewHolder>(DisneyCharacterDiffCallBack()){
 
-    private val characters = mutableListOf<CharacterData>()
+    private val characters = mutableListOf<DisneyCharacterData>()
 
-    override fun onCreateViewHolder( parent: ViewGroup, viewType: Int): CharacterViewHolder {
+    override fun onCreateViewHolder( parent: ViewGroup, viewType: Int): DisneyCharacterViewHolder {
         LayoutInflater.from(parent.context).inflate(R.layout.item_character, parent, false).apply {
-            return CharacterViewHolder(this)
+            return DisneyCharacterViewHolder(this)
         }
     }
 
 
-    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DisneyCharacterViewHolder, position: Int) {
         getItem(position).let {
-            character -> holder.bind(character)
+            characters -> holder.bind(characters)
         }
+    }
+
+    fun update(newList: MutableList<DisneyCharacterData>) {
+        characters.addAll(newList)
+        notifyDataSetChanged()
     }
 }
 
-class CharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+class DisneyCharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
      val binding: ItemCharacterBinding = ItemCharacterBinding.bind(itemView)
 
-    fun bind(character: CharacterData) {
+    fun bind(character: DisneyCharacterData) {
         binding.textViewCharacterName.text = character.name
 //        binding.textViewFilms.text = character.films.toString()
 //        binding.textViewTvShows.text = character.tvShows.joinToString(separator = "\n")
