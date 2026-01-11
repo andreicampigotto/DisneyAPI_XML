@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.disneyxml.R
 import com.example.disneyxml.databinding.ItemCharacterBinding
 import com.example.disneyxml.data.model.DisneyCharacterData
+import org.w3c.dom.CharacterData
 
 class DisneyCharactersAdapter():
         ListAdapter<DisneyCharacterData, DisneyCharacterViewHolder>(DisneyCharacterDiffCallBack()){
@@ -32,6 +33,7 @@ class DisneyCharactersAdapter():
         characters.addAll(newList)
         notifyDataSetChanged()
     }
+
 }
 
 class DisneyCharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
