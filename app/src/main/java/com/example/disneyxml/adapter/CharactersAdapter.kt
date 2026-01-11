@@ -3,13 +3,12 @@ package com.example.disneyxml.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.disneyxml.R
 import com.example.disneyxml.databinding.ItemCharacterBinding
-import com.example.disneyxml.model.CharacterData
+import com.example.disneyxml.data.model.CharacterData
 
 class CharactersAdapter():
         ListAdapter<CharacterData, CharacterViewHolder>(CharacterDiffCallBack()){
