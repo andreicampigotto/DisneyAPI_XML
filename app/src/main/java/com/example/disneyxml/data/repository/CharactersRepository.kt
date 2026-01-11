@@ -1,33 +1,27 @@
 package com.example.disneyxml.data.repository
 
 import com.example.disneyxml.data.model.CharacterData
+import com.example.disneyxml.data.remote.api.IDisneyCharactersApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.IOException
+import retrofit2.Response
 
-sealed class State<out T> {
-    object Loading : State<Nothing>()
-    data class Success<out T>(val model: T) : State<T>()
-    data class Error(val message: String?) : State<Nothing>()
+class DisneyCharactersRepository (
+    private val iDisneyCharactersApi: IDisneyCharactersApi,
+){
+
+private fun <T> processData(response: Response<T>): T? {
+    return if (response.isSuccessful) response.body() else null
 }
 
-class CharactersRepository(
-    private val ICharacterApi: ICharacterApi,
-) : ICharacterRepository {
-    override suspend fun getCharacters(): State<CharacterData>{
-
-        return withContext(Dispatchers.IO) {
-            try {
-                val response = ICharacterApiApi.Info()
-                State.Success(CharacterResponse)
-
-            } catch (ex: IOException) {
-                // Network Error
-                State.Error(message = ex.localizedMessage)
-            } catch (ex: Exception) {
-               State.Error(message = ex.localizedMessage)
-            }
-        }
+    suspend fun getCharacters(): List<CharacterData>? {
+        val resultAPI = withContext(Dispatchers.Main) {
+                val response = iDisneyCharactersApi.getCharacters()
+                val processedResponse = processData(response)
+                processedResponse?.data
     }
-
+        return resultAPI
+    }
 }
+
+

@@ -34,9 +34,9 @@ class CharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
     fun bind(character: CharacterData) {
         binding.textViewCharacterName.text = character.name
-        binding.textViewFilms.text = character.films.toString()
-        binding.textViewTvShows.text = character.tvShows.joinToString(separator = "\n")
-        binding.textViewParkAttractions.text = character.parkAttractions.toString()
+//        binding.textViewFilms.text = character.films.toString()
+//        binding.textViewTvShows.text = character.tvShows.joinToString(separator = "\n")
+//        binding.textViewParkAttractions.text = character.parkAttractions.toString()
 
         character.let {
             Glide.with(itemView.context).load(it.imageUrl)
