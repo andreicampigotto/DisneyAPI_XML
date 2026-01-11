@@ -69,4 +69,8 @@ dependencies {
 
     //RecycleView
     implementation(libs.recyclerview)
+
+    // NAVIGATION
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.6")
 }
