@@ -14,10 +14,12 @@ import com.example.disneyxml.adapter.DisneyCharactersAdapter
 import com.example.disneyxml.data.model.DisneyCharacterData
 import com.example.disneyxml.databinding.CharactersFragmentBinding
 import com.example.disneyxml.viewModel.DisneyCharacterViewModel
+import org.koin.android.ext.android.inject
+import kotlin.getValue
 
 class CharacterFragment : Fragment(R.layout.characters_fragment) {
 
-    private lateinit var viewModel: DisneyCharacterViewModel
+    private var viewModel by inject<DisneyCharacterViewModel>()
     private lateinit var binding: CharactersFragmentBinding
 
     private val disneyCharactersAdapter = DisneyCharactersAdapter()
@@ -39,7 +41,7 @@ class CharacterFragment : Fragment(R.layout.characters_fragment) {
         binding = CharactersFragmentBinding.bind(view)
 
         viewModel = ViewModelProvider(this)[DisneyCharacterViewModel::class.java]
-        viewModel.repositories.observe(viewLifecycleOwner, observerCharacters)
+        viewModel.characters.observe(viewLifecycleOwner, observerCharacters)
         viewModel.page.observe(viewLifecycleOwner, observerPage)
 
         setupRecyclerView()
