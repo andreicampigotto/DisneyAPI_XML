@@ -9,24 +9,25 @@ import com.example.disneyxml.repository.IDisneyCharacterRepository
 import kotlinx.coroutines.launch
 
 class DisneyCharacterViewModel(
-    private val repository: IDisneyCharacterRepository
+    private val character: IDisneyCharacterRepository
 ): ViewModel() {
 
-    private val _repositories = MutableLiveData<List<DisneyCharacterData>>()
-    val repositories: LiveData<List<DisneyCharacterData>> = _repositories
+    private val _characters = MutableLiveData<List<DisneyCharacterData>>()
+    val characters : LiveData<List<DisneyCharacterData>> = _characters
 
     private val _page = MutableLiveData<Int>()
     val page: LiveData<Int> = _page
 
     fun getCharacterList(page: Int) {
         viewModelScope.launch {
-            val returnedRepositories =
-                repository.getCharacters()
-            returnedRepositories.let {
-                _repositories.value = it
+            val returnedCharacters =
+                character.getCharacters()
+            returnedCharacters.let {
+                _characters.value = it
             }
         }
     }
+
 
     fun nextPage() {
         _page.value = (_page.value ?: 1) + 1
