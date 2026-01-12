@@ -12,7 +12,7 @@
         tools:layout="@layout/main_activity" />
     <fragment
         android:id="@+id/characters_fragment"
-        android:name="com.example.disneyxml.view.character_fragment"
+        android:name="com.example.disneyxml.view.CharacterFragment"
         android:label="character_fragment"
         tools:layout="@layout/characters_fragment" />
 
