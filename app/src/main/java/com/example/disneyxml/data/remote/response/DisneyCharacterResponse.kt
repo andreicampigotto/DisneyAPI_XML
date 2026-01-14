@@ -1,20 +1,8 @@
-package com.example.disneyxml.data.model
+package com.example.disneyxml.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class DisneyCharacterInfo(
-    @SerializedName("count") val count: Long,
-    @SerializedName("totalPages") val totalPages: Long,
-    //@SerializedName("id")
-//    previousPage": null,
-//    @SerializedName("id")
-//    "nextPage": "http://api.disneyapi.dev/character?page=2&pageSize=50"
-)
-
 data class DisneyCharacterResponse(
-    val data: List<DisneyCharacterData>
-)
-data class DisneyCharacterData(
     @SerializedName("id") val id: Long,
     @SerializedName("films")  val films: List<String>,
     @SerializedName("shortFilms") val shortFilms: List<String>,

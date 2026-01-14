@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.disneyxml.R
 import com.example.disneyxml.databinding.ItemCharacterBinding
-import com.example.disneyxml.data.model.DisneyCharacterData
+import com.example.disneyxml.data.model.DisneyCharacterModel
 import org.w3c.dom.CharacterData
 
 class DisneyCharactersAdapter():
-        ListAdapter<DisneyCharacterData, DisneyCharacterViewHolder>(DisneyCharacterDiffCallBack()){
+        ListAdapter<DisneyCharacterModel, DisneyCharacterViewHolder>(DisneyCharacterDiffCallBack()){
 
-    private val characters = mutableListOf<DisneyCharacterData>()
+    private val characters = mutableListOf<DisneyCharacterModel>()
 
     override fun onCreateViewHolder( parent: ViewGroup, viewType: Int): DisneyCharacterViewHolder {
         LayoutInflater.from(parent.context).inflate(R.layout.item_character, parent, false).apply {
@@ -29,7 +29,7 @@ class DisneyCharactersAdapter():
         }
     }
 
-    fun update(newList: MutableList<DisneyCharacterData>) {
+    fun update(newList: MutableList<DisneyCharacterModel>) {
         characters.addAll(newList)
         notifyDataSetChanged()
     }
@@ -39,7 +39,7 @@ class DisneyCharactersAdapter():
 class DisneyCharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
      val binding: ItemCharacterBinding = ItemCharacterBinding.bind(itemView)
 
-    fun bind(character: DisneyCharacterData) {
+    fun bind(character: DisneyCharacterModel) {
         binding.textViewCharacterName.text = character.name
 //        binding.textViewFilms.text = character.films.toString()
 //        binding.textViewTvShows.text = character.tvShows.joinToString(separator = "\n")

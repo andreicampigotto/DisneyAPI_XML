@@ -30,6 +30,5 @@ class HTTPClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-
     fun <T : Any> create(clazz: KClass<T>): T = provideRetrofit.create(clazz.java)
 }
